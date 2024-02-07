@@ -1,2 +1,7 @@
-# BarberShop_APP
-This is a BarberShop App under development
+# DownStairs - BarberShop
+
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.

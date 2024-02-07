@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>836710639150-aohuq2jnvniv05smaee7knv5kos9hjgb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.836710639150-aohuq2jnvniv05smaee7knv5kos9hjgb</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>836710639150-hpftpfgdfhk6ra0b8kqsf026a2pv3s7n.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDR7BjLTKGoV-sGjM6s3ONQuy8jhZ53J_o</string>
+	<key>GCM_SENDER_ID</key>
+	<string>836710639150</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mycompany.downstairsbarbershop</string>
+	<key>PROJECT_ID</key>
+	<string>down-stairs-barber-shop-3givly</string>
+	<key>STORAGE_BUCKET</key>
+	<string>down-stairs-barber-shop-3givly.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:836710639150:ios:aea324612788e86f4461bf</string>
+	<key>DATABASE_URL</key>
+	<string>https://down-stairs-barber-shop-3givly-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
