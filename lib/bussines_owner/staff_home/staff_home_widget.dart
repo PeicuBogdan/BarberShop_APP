@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_static_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:mapbox_search/mapbox_search.dart' as mapbox;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:mapbox_search/mapbox_search.dart';
 import 'staff_home_model.dart';
 export 'staff_home_model.dart';
 
@@ -37,15 +36,6 @@ class _StaffHomeWidgetState extends State<StaffHomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -58,7 +48,7 @@ class _StaffHomeWidgetState extends State<StaffHomeWidget> {
           child: FlutterFlowStaticMap(
             location: LatLng(9.341465, -79.891704),
             apiKey: 'ENTER_YOUR_MAPBOX_API_KEY_HERE',
-            style: MapBoxStyle.Light,
+            style: mapbox.MapBoxStyle.Light,
             width: 300.0,
             height: 300.0,
             fit: BoxFit.cover,

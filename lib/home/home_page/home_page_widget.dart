@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'home_page_model.dart';
@@ -25,217 +24,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'rowOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-    'carouselOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-    'rowOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 500.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 500.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 500.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-    'rowOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 600.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 600.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 600.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 700.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 700.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 700.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-    'rowOnPageLoadAnimation4': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 800.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 800.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 800.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-    'rowOnPageLoadAnimation5': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 900.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 900.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 900.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 900.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -243,6 +32,217 @@ class _HomePageWidgetState extends State<HomePageWidget>
     _model = createModel(context, () => HomePageModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Home_Page'});
+    animationsMap.addAll({
+      'rowOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+      'carouselOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+      'rowOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 500.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 500.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 500.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+      'rowOnPageLoadAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+      'imageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 700.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 700.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 700.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+      'rowOnPageLoadAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 800.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 800.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 800.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+      'rowOnPageLoadAnimation5': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 900.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 900.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 900.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 900.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -256,15 +256,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -321,6 +312,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
                                               fontSize: 15.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -359,6 +351,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
                                               fontSize: 15.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -582,6 +575,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     .override(
                                       fontFamily: 'Plus Jakarta Sans',
                                       fontSize: 25.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -615,6 +609,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -634,6 +629,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -662,6 +658,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -681,6 +678,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -709,6 +707,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -728,6 +727,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -756,6 +756,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -775,6 +776,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -803,6 +805,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -822,6 +825,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -850,6 +854,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -869,6 +874,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -897,6 +903,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -916,6 +923,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -953,6 +961,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
                                   fontSize: 25.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),
@@ -1032,6 +1041,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
                                               fontSize: 15.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -1053,6 +1063,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           .override(
                                             fontFamily: 'Plus Jakarta Sans',
                                             fontSize: 15.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),

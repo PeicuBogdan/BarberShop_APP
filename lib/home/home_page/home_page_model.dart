@@ -15,8 +15,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   int carouselCurrentIndex = 1;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     titleAuthorModel = createModel(context, () => TitleAuthorModel());
@@ -27,8 +25,4 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
     unfocusNode.dispose();
     titleAuthorModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

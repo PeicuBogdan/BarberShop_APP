@@ -15,8 +15,6 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     titleAuthorModel = createModel(context, () => TitleAuthorModel());
@@ -28,8 +26,4 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
     titleAuthorModel.dispose();
     tabBarController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

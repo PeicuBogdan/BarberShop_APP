@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'owner_home_model.dart';
 export 'owner_home_model.dart';
 
@@ -37,15 +36,6 @@ class _OwnerHomeWidgetState extends State<OwnerHomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -80,6 +70,7 @@ class _OwnerHomeWidgetState extends State<OwnerHomeWidget> {
                   fontFamily: 'Outfit',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: const [],
@@ -130,6 +121,7 @@ class _OwnerHomeWidgetState extends State<OwnerHomeWidget> {
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 fontSize: 20.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -149,6 +141,7 @@ class _OwnerHomeWidgetState extends State<OwnerHomeWidget> {
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),

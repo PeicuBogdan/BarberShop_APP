@@ -26,13 +26,13 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
     super.initState();
     _model = createModel(context, () => ServiciiModel());
 
-    _model.title1Controller ??= TextEditingController();
+    _model.title1TextController ??= TextEditingController();
     _model.title1FocusNode ??= FocusNode();
 
-    _model.time1Controller ??= TextEditingController();
+    _model.time1TextController ??= TextEditingController();
     _model.time1FocusNode ??= FocusNode();
 
-    _model.price1Controller ??= TextEditingController();
+    _model.price1TextController ??= TextEditingController();
     _model.price1FocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -104,8 +104,8 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
                                                   child: TextFormField(
-                                                    controller:
-                                                        _model.title1Controller,
+                                                    controller: _model
+                                                        .title1TextController,
                                                     focusNode:
                                                         _model.title1FocusNode,
                                                     autofocus: true,
@@ -120,11 +120,23 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           UnderlineInputBorder(
                                                         borderSide: BorderSide(
@@ -176,9 +188,14 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     validator: _model
-                                                        .title1ControllerValidator
+                                                        .title1TextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -232,7 +249,7 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                       TextFormField(
                                                                     controller:
                                                                         _model
-                                                                            .time1Controller,
+                                                                            .time1TextController,
                                                                     focusNode:
                                                                         _model
                                                                             .time1FocusNode,
@@ -247,12 +264,24 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                               .getText(
                                                                         'k70ihn8j' /* Time */,
                                                                       ),
-                                                                      labelStyle:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelMedium,
-                                                                      hintStyle:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelMedium,
+                                                                      labelStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
+                                                                      hintStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
                                                                       enabledBorder:
                                                                           UnderlineInputBorder(
                                                                         borderSide:
@@ -304,9 +333,15 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyMedium,
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Plus Jakarta Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
                                                                     validator: _model
-                                                                        .time1ControllerValidator
+                                                                        .time1TextControllerValidator
                                                                         .asValidator(
                                                                             context),
                                                                   ),
@@ -328,7 +363,13 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMedium,
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
                                                                 ),
                                                               ),
                                                               Expanded(
@@ -343,7 +384,7 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                       TextFormField(
                                                                     controller:
                                                                         _model
-                                                                            .price1Controller,
+                                                                            .price1TextController,
                                                                     focusNode:
                                                                         _model
                                                                             .price1FocusNode,
@@ -358,12 +399,24 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                               .getText(
                                                                         '00t1yedt' /* Price */,
                                                                       ),
-                                                                      labelStyle:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelMedium,
-                                                                      hintStyle:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelMedium,
+                                                                      labelStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
+                                                                      hintStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Outfit',
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
                                                                       enabledBorder:
                                                                           UnderlineInputBorder(
                                                                         borderSide:
@@ -415,9 +468,15 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyMedium,
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Plus Jakarta Sans',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
                                                                     validator: _model
-                                                                        .price1ControllerValidator
+                                                                        .price1TextControllerValidator
                                                                         .asValidator(
                                                                             context),
                                                                   ),
@@ -439,7 +498,13 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMedium,
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
                                                                 ),
                                                               ),
                                                             ],
@@ -518,6 +583,7 @@ class _ServiciiWidgetState extends State<ServiciiWidget> {
                                                                             .override(
                                                                               fontFamily: 'Plus Jakarta Sans',
                                                                               color: Colors.white,
+                                                                              letterSpacing: 0.0,
                                                                             ),
                                                                         elevation:
                                                                             3.0,

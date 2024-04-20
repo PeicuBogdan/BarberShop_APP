@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'select_barber_model.dart';
 export 'select_barber_model.dart';
 
@@ -52,15 +51,6 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return StreamBuilder<List<UsersRecord>>(
       stream: queryUsersRecord(
         queryBuilder: (usersRecord) => usersRecord.where(
@@ -138,6 +128,7 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                 fontFamily: 'Outfit',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 24.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                               ),
                     ),
@@ -168,13 +159,31 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                           setState(() =>
                               _model.calendarSelectedDay = newSelectedDate);
                         },
-                        titleStyle: FlutterFlowTheme.of(context).headlineSmall,
-                        dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
-                        dateStyle: FlutterFlowTheme.of(context).bodyMedium,
+                        titleStyle:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
+                        dayOfWeekStyle:
+                            FlutterFlowTheme.of(context).labelLarge.override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
+                        dateStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  letterSpacing: 0.0,
+                                ),
                         selectedDateStyle:
-                            FlutterFlowTheme.of(context).titleSmall,
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  letterSpacing: 0.0,
+                                ),
                         inactiveDateStyle:
-                            FlutterFlowTheme.of(context).labelMedium,
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
                         locale: FFLocalizations.of(context).languageCode,
                       ),
                       Expanded(
@@ -331,6 +340,8 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                                                           'Plus Jakarta Sans',
                                                                       fontSize:
                                                                           15.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
                                                               ),
                                                             ),
@@ -360,6 +371,8 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                                                           'Plus Jakarta Sans',
                                                                       fontSize:
                                                                           10.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
                                                               ),
                                                             ),
@@ -396,6 +409,8 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                                                       'Plus Jakarta Sans',
                                                                   fontSize:
                                                                       13.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           ),
                                                           Expanded(
@@ -463,6 +478,7 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Plus Jakarta Sans',
                                                                                   fontSize: 12.0,
+                                                                                  letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -516,6 +532,13 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                                               listViewUsersRecord] =
                                                           newValue!);
                                                     },
+                                                    side: BorderSide(
+                                                      width: 2,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                    ),
                                                     activeColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -582,6 +605,7 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                     .override(
                                       fontFamily: 'Outfit',
                                       fontSize: 32.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                     ),
                                 pickerBackgroundColor:
@@ -620,6 +644,7 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                       .override(
                                         fontFamily: 'Outfit',
                                         fontSize: 32.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                       ),
                                   pickerBackgroundColor:
@@ -668,6 +693,7 @@ class _SelectBarberWidgetState extends State<SelectBarberWidget> {
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: Colors.white,
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 2.0,

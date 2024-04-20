@@ -14,8 +14,6 @@ class ProfileCreateModel extends FlutterFlowModel<ProfileCreateWidget> {
   // Model for Profile_CR_EDIT component.
   late ProfileCREDITModel profileCREDITModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     titleAuthorModel = createModel(context, () => TitleAuthorModel());
@@ -28,8 +26,4 @@ class ProfileCreateModel extends FlutterFlowModel<ProfileCreateWidget> {
     titleAuthorModel.dispose();
     profileCREDITModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

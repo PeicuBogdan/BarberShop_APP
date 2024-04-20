@@ -10,8 +10,6 @@ class OwnerHomeModel extends FlutterFlowModel<OwnerHomeWidget> {
   // Model for Servicii component.
   late ServiciiModel serviciiModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     serviciiModel = createModel(context, () => ServiciiModel());
@@ -22,8 +20,4 @@ class OwnerHomeModel extends FlutterFlowModel<OwnerHomeWidget> {
     unfocusNode.dispose();
     serviciiModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

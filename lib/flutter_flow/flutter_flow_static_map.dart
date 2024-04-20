@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mapbox_search/colors/color.dart' show RgbColor;
-import 'package:mapbox_search/mapbox_search.dart';
+import 'package:mapbox_search/mapbox_search.dart' as mapbox;
 
 import 'lat_lng.dart';
 
@@ -25,7 +24,7 @@ class FlutterFlowStaticMap extends StatelessWidget {
 
   final LatLng location;
   final String apiKey;
-  final MapBoxStyle style;
+  final mapbox.MapBoxStyle style;
   final double width;
   final double height;
   final BoxFit? fit;
@@ -65,7 +64,7 @@ class FlutterFlowStaticMap extends StatelessWidget {
 String getStaticMapImageURL(
   LatLng location,
   String apiKey,
-  MapBoxStyle mapStyle,
+  mapbox.MapBoxStyle mapStyle,
   int width,
   int height,
   Color? markerColor,
@@ -74,14 +73,14 @@ String getStaticMapImageURL(
   int rotation,
   int tilt,
 ) {
-  final finalLocation = Location(
+  final finalLocation = (
     lat: location.latitude.clamp(-90, 90).toDouble(),
-    lng: location.longitude.clamp(-180, 180).toDouble(),
+    long: location.longitude.clamp(-180, 180).toDouble(),
   );
   final finalRotation = rotation.clamp(-180, 180).round();
   final finalTilt = tilt.clamp(0, 60).round();
   final finalZoom = zoom.clamp(0, 22).round();
-  final image = StaticImage(apiKey: apiKey);
+  final image = mapbox.StaticImage(apiKey: apiKey);
   if (markerColor == null && (markerURL == null || markerURL.trim().isEmpty)) {
     return image
         .getStaticUrlWithoutMarker(
@@ -98,14 +97,14 @@ String getStaticMapImageURL(
     return image
         .getStaticUrlWithMarker(
           marker: markerURL == null || markerURL.trim().isEmpty
-              ? MapBoxMarker(
-                  markerColor: RgbColor(
+              ? mapbox.MapBoxMarker(
+                  markerColor: mapbox.RgbColor(
                     markerColor!.red,
                     markerColor.green,
                     markerColor.blue,
                   ),
-                  markerLetter: MakiIcons.circle.value,
-                  markerSize: MarkerSize.MEDIUM,
+                  markerLetter: mapbox.MakiIcons.circle.value,
+                  markerSize: mapbox.MarkerSize.MEDIUM,
                 )
               : null,
           markerUrl: markerURL,

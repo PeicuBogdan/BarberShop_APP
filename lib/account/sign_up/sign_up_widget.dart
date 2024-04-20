@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'sign_up_model.dart';
@@ -24,34 +23,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -59,14 +31,43 @@ class _SignUpWidgetState extends State<SignUpWidget>
     _model = createModel(context, () => SignUpModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Sign_Up'});
-    _model.emailAddressCreateController ??= TextEditingController();
+    _model.emailAddressCreateTextController ??= TextEditingController();
     _model.emailAddressCreateFocusNode ??= FocusNode();
 
-    _model.passwordCreateController ??= TextEditingController();
+    _model.passwordCreateTextController ??= TextEditingController();
     _model.passwordCreateFocusNode ??= FocusNode();
 
-    _model.passwordConfirmController ??= TextEditingController();
+    _model.passwordConfirmTextController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -80,15 +81,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -158,7 +150,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             width: 350.0,
                                             child: TextFormField(
                                               controller: _model
-                                                  .emailAddressCreateController,
+                                                  .emailAddressCreateTextController,
                                               focusNode: _model
                                                   .emailAddressCreateFocusNode,
                                               autofocus: true,
@@ -180,6 +172,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -245,12 +238,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               textAlign: TextAlign.center,
                                               keyboardType:
                                                   TextInputType.emailAddress,
                                               validator: _model
-                                                  .emailAddressCreateControllerValidator
+                                                  .emailAddressCreateTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -263,9 +257,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             width: 350.0,
                                             child: TextFormField(
                                               controller: _model
-                                                  .passwordCreateController,
+                                                  .passwordCreateTextController,
                                               focusNode: _model
                                                   .passwordCreateFocusNode,
+                                              autofocus: false,
                                               autofillHints: const [
                                                 AutofillHints.password
                                               ],
@@ -285,6 +280,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -371,9 +367,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               validator: _model
-                                                  .passwordCreateControllerValidator
+                                                  .passwordCreateTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -386,9 +383,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             width: 350.0,
                                             child: TextFormField(
                                               controller: _model
-                                                  .passwordConfirmController,
+                                                  .passwordConfirmTextController,
                                               focusNode: _model
                                                   .passwordConfirmFocusNode,
+                                              autofocus: false,
                                               autofillHints: const [
                                                 AutofillHints.password
                                               ],
@@ -408,6 +406,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -494,9 +493,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               validator: _model
-                                                  .passwordConfirmControllerValidator
+                                                  .passwordConfirmTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -516,10 +516,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 GoRouter.of(context)
                                                     .prepareAuthEvent();
                                                 if (_model
-                                                        .passwordCreateController
+                                                        .passwordCreateTextController
                                                         .text !=
                                                     _model
-                                                        .passwordConfirmController
+                                                        .passwordConfirmTextController
                                                         .text) {
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
@@ -536,10 +536,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                     .createAccountWithEmail(
                                                   context,
                                                   _model
-                                                      .emailAddressCreateController
+                                                      .emailAddressCreateTextController
                                                       .text,
                                                   _model
-                                                      .passwordCreateController
+                                                      .passwordCreateTextController
                                                       .text,
                                                 );
                                                 if (user == null) {
@@ -580,6 +580,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                                   .of(context)
                                                               .secondaryText,
                                                           fontSize: 20.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                 elevation: 0.0,
                                                 borderSide: BorderSide(
@@ -652,6 +653,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   elevation: 0.0,
                                                   borderSide: BorderSide(
@@ -693,6 +695,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
@@ -791,6 +794,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryText,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
@@ -903,6 +908,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryText,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,

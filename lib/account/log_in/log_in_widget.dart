@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'log_in_model.dart';
@@ -24,34 +23,7 @@ class _LogInWidgetState extends State<LogInWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -59,11 +31,40 @@ class _LogInWidgetState extends State<LogInWidget>
     _model = createModel(context, () => LogInModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Log_In'});
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -77,15 +78,6 @@ class _LogInWidgetState extends State<LogInWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -158,8 +150,8 @@ class _LogInWidgetState extends State<LogInWidget>
                                           child: SizedBox(
                                             width: 350.0,
                                             child: TextFormField(
-                                              controller:
-                                                  _model.emailAddressController,
+                                              controller: _model
+                                                  .emailAddressTextController,
                                               focusNode:
                                                   _model.emailAddressFocusNode,
                                               autofocus: true,
@@ -181,6 +173,7 @@ class _LogInWidgetState extends State<LogInWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -246,11 +239,12 @@ class _LogInWidgetState extends State<LogInWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               keyboardType:
                                                   TextInputType.emailAddress,
                                               validator: _model
-                                                  .emailAddressControllerValidator
+                                                  .emailAddressTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -263,9 +257,10 @@ class _LogInWidgetState extends State<LogInWidget>
                                             width: 350.0,
                                             child: TextFormField(
                                               controller:
-                                                  _model.passwordController,
+                                                  _model.passwordTextController,
                                               focusNode:
                                                   _model.passwordFocusNode,
+                                              autofocus: false,
                                               autofillHints: const [
                                                 AutofillHints.password
                                               ],
@@ -285,6 +280,7 @@ class _LogInWidgetState extends State<LogInWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -371,9 +367,10 @@ class _LogInWidgetState extends State<LogInWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               validator: _model
-                                                  .passwordControllerValidator
+                                                  .passwordTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -393,9 +390,11 @@ class _LogInWidgetState extends State<LogInWidget>
                                               final user = await authManager
                                                   .signInWithEmail(
                                                 context,
-                                                _model.emailAddressController
+                                                _model
+                                                    .emailAddressTextController
                                                     .text,
-                                                _model.passwordController.text,
+                                                _model.passwordTextController
+                                                    .text,
                                               );
                                               if (user == null) {
                                                 return;
@@ -432,6 +431,7 @@ class _LogInWidgetState extends State<LogInWidget>
                                                                     context)
                                                                 .secondaryText,
                                                         fontSize: 20.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               elevation: 0.0,
                                               borderSide: BorderSide(
@@ -511,6 +511,8 @@ class _LogInWidgetState extends State<LogInWidget>
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                         elevation: 0.0,
                                                         borderSide: BorderSide(
@@ -577,6 +579,8 @@ class _LogInWidgetState extends State<LogInWidget>
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -623,6 +627,7 @@ class _LogInWidgetState extends State<LogInWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
@@ -721,6 +726,8 @@ class _LogInWidgetState extends State<LogInWidget>
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryText,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
@@ -831,6 +838,8 @@ class _LogInWidgetState extends State<LogInWidget>
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryText,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,

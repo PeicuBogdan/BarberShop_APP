@@ -8,18 +8,16 @@ class ServiciiModel extends FlutterFlowModel<ServiciiWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for title_1 widget.
   FocusNode? title1FocusNode;
-  TextEditingController? title1Controller;
-  String? Function(BuildContext, String?)? title1ControllerValidator;
+  TextEditingController? title1TextController;
+  String? Function(BuildContext, String?)? title1TextControllerValidator;
   // State field(s) for time_1 widget.
   FocusNode? time1FocusNode;
-  TextEditingController? time1Controller;
-  String? Function(BuildContext, String?)? time1ControllerValidator;
+  TextEditingController? time1TextController;
+  String? Function(BuildContext, String?)? time1TextControllerValidator;
   // State field(s) for price_1 widget.
   FocusNode? price1FocusNode;
-  TextEditingController? price1Controller;
-  String? Function(BuildContext, String?)? price1ControllerValidator;
-
-  /// Initialization and disposal methods.
+  TextEditingController? price1TextController;
+  String? Function(BuildContext, String?)? price1TextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -27,16 +25,12 @@ class ServiciiModel extends FlutterFlowModel<ServiciiWidget> {
   @override
   void dispose() {
     title1FocusNode?.dispose();
-    title1Controller?.dispose();
+    title1TextController?.dispose();
 
     time1FocusNode?.dispose();
-    time1Controller?.dispose();
+    time1TextController?.dispose();
 
     price1FocusNode?.dispose();
-    price1Controller?.dispose();
+    price1TextController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

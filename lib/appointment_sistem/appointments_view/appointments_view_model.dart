@@ -13,8 +13,6 @@ class AppointmentsViewModel extends FlutterFlowModel<AppointmentsViewWidget> {
   // State field(s) for Checkbox widget.
   bool? checkboxValue3;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -22,8 +20,4 @@ class AppointmentsViewModel extends FlutterFlowModel<AppointmentsViewWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

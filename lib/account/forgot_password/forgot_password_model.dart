@@ -11,11 +11,9 @@ class ForgotPasswordModel extends FlutterFlowModel<ForgotPasswordWidget> {
   late TitleAuthorModel titleAuthorModel;
   // State field(s) for emailAddress_recover widget.
   FocusNode? emailAddressRecoverFocusNode;
-  TextEditingController? emailAddressRecoverController;
+  TextEditingController? emailAddressRecoverTextController;
   String? Function(BuildContext, String?)?
-      emailAddressRecoverControllerValidator;
-
-  /// Initialization and disposal methods.
+      emailAddressRecoverTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -27,10 +25,6 @@ class ForgotPasswordModel extends FlutterFlowModel<ForgotPasswordWidget> {
     unfocusNode.dispose();
     titleAuthorModel.dispose();
     emailAddressRecoverFocusNode?.dispose();
-    emailAddressRecoverController?.dispose();
+    emailAddressRecoverTextController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

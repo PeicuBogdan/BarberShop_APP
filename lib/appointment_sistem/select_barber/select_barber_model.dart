@@ -22,8 +22,6 @@ class SelectBarberModel extends FlutterFlowModel<SelectBarberWidget> {
 
   DateTime? datePicked;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     calendarSelectedDay = DateTimeRange(
@@ -36,8 +34,4 @@ class SelectBarberModel extends FlutterFlowModel<SelectBarberWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

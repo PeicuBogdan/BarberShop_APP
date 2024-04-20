@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'forgot_password_model.dart';
 export 'forgot_password_model.dart';
@@ -23,34 +22,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -59,8 +31,37 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Forgot_Password'});
-    _model.emailAddressRecoverController ??= TextEditingController();
+    _model.emailAddressRecoverTextController ??= TextEditingController();
     _model.emailAddressRecoverFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -74,15 +75,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -160,8 +152,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                                   child: SizedBox(
                                     width: 350.0,
                                     child: TextFormField(
-                                      controller:
-                                          _model.emailAddressRecoverController,
+                                      controller: _model
+                                          .emailAddressRecoverTextController,
                                       focusNode:
                                           _model.emailAddressRecoverFocusNode,
                                       autofocus: true,
@@ -179,6 +171,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
+                                              letterSpacing: 0.0,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -227,10 +220,11 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                                             fontFamily: 'Plus Jakarta Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                           ),
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
-                                          .emailAddressRecoverControllerValidator
+                                          .emailAddressRecoverTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -242,8 +236,10 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                                       logFirebaseEvent(
                                           'FORGOT_PASSWORD_PAGE_Link_Button_ON_TAP');
                                       logFirebaseEvent('Link_Button_auth');
-                                      if (_model.emailAddressRecoverController
-                                          .text.isEmpty) {
+                                      if (_model
+                                          .emailAddressRecoverTextController
+                                          .text
+                                          .isEmpty) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
@@ -256,7 +252,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                                       }
                                       await authManager.resetPassword(
                                         email: _model
-                                            .emailAddressRecoverController.text,
+                                            .emailAddressRecoverTextController
+                                            .text,
                                         context: context,
                                       );
                                     },
@@ -280,6 +277,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 20.0,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
                                       borderSide: BorderSide(

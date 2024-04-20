@@ -26,34 +26,7 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
     with TickerProviderStateMixin {
   late ProfileCREDITModel _model;
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -66,17 +39,46 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
     super.initState();
     _model = createModel(context, () => ProfileCREDITModel());
 
-    _model.yourNameController ??=
+    _model.yourNameTextController ??=
         TextEditingController(text: currentUserDisplayName);
     _model.yourNameFocusNode ??= FocusNode();
 
-    _model.yourPhoneController ??=
+    _model.yourPhoneTextController ??=
         TextEditingController(text: currentPhoneNumber);
     _model.yourPhoneFocusNode ??= FocusNode();
 
-    _model.myBioController ??= TextEditingController(
+    _model.myBioTextController ??= TextEditingController(
         text: valueOrDefault(currentUserDocument?.description, ''));
     _model.myBioFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -111,7 +113,10 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                         'by0qk1et' /* Adjust the content below to CR... */,
                       ),
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).labelLarge,
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                            fontFamily: 'Outfit',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                 ),
@@ -299,6 +304,7 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                                         fontFamily: 'Plus Jakarta Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: BorderSide(
@@ -323,7 +329,7 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                     builder: (context) => SizedBox(
                       width: 350.0,
                       child: TextFormField(
-                        controller: _model.yourNameController,
+                        controller: _model.yourNameTextController,
                         focusNode: _model.yourNameFocusNode,
                         autofillHints: const [AutofillHints.name],
                         textCapitalization: TextCapitalization.words,
@@ -338,16 +344,22 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                                 fontFamily: 'Outfit',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
+                                letterSpacing: 0.0,
                               ),
                           alignLabelWithHint: true,
                           hintText: FFLocalizations.of(context).getText(
                             'aqa07mlt' /* Your full name... */,
                           ),
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Outfit',
+                                    letterSpacing: 0.0,
+                                  ),
                           errorStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: FlutterFlowTheme.of(context).error,
+                                    letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -386,10 +398,11 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Plus Jakarta Sans',
                               color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
                             ),
                         textAlign: TextAlign.start,
                         cursorColor: FlutterFlowTheme.of(context).primary,
-                        validator: _model.yourNameControllerValidator
+                        validator: _model.yourNameTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -402,7 +415,7 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                     builder: (context) => SizedBox(
                       width: 350.0,
                       child: TextFormField(
-                        controller: _model.yourPhoneController,
+                        controller: _model.yourPhoneTextController,
                         focusNode: _model.yourPhoneFocusNode,
                         autofillHints: const [AutofillHints.telephoneNumber],
                         textCapitalization: TextCapitalization.none,
@@ -417,16 +430,22 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                                 fontFamily: 'Outfit',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
+                                letterSpacing: 0.0,
                               ),
                           alignLabelWithHint: true,
                           hintText: FFLocalizations.of(context).getText(
                             'n2wti1o3' /* Your phone number */,
                           ),
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Outfit',
+                                    letterSpacing: 0.0,
+                                  ),
                           errorStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: FlutterFlowTheme.of(context).error,
+                                    letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -465,13 +484,14 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Plus Jakarta Sans',
                               color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
                             ),
                         textAlign: TextAlign.start,
                         maxLength: 10,
                         maxLengthEnforcement: MaxLengthEnforcement.enforced,
                         keyboardType: TextInputType.phone,
                         cursorColor: FlutterFlowTheme.of(context).primary,
-                        validator: _model.yourPhoneControllerValidator
+                        validator: _model.yourPhoneTextControllerValidator
                             .asValidator(context),
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp('[0-9]'))
@@ -518,6 +538,7 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                             .override(
                               fontFamily: 'Plus Jakarta Sans',
                               color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
                             ),
                         hintText: FFLocalizations.of(context).getText(
                           'zvnsn2t7' /* Location */,
@@ -549,7 +570,7 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                     builder: (context) => SizedBox(
                       width: 350.0,
                       child: TextFormField(
-                        controller: _model.myBioController,
+                        controller: _model.myBioTextController,
                         focusNode: _model.myBioFocusNode,
                         textCapitalization: TextCapitalization.sentences,
                         obscureText: false,
@@ -563,16 +584,22 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                                 fontFamily: 'Plus Jakarta Sans',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
+                                letterSpacing: 0.0,
                               ),
                           alignLabelWithHint: false,
                           hintText: FFLocalizations.of(context).getText(
                             '6vav73i0' /* A little about you... */,
                           ),
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Outfit',
+                                    letterSpacing: 0.0,
+                                  ),
                           errorStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: FlutterFlowTheme.of(context).error,
+                                    letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -611,11 +638,12 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Plus Jakarta Sans',
                               color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
                             ),
                         textAlign: TextAlign.center,
                         maxLines: 3,
                         cursorColor: FlutterFlowTheme.of(context).primary,
-                        validator: _model.myBioControllerValidator
+                        validator: _model.myBioTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -643,10 +671,10 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                           photoUrl: _model.uploadedFileUrl != ''
                               ? _model.uploadedFileUrl
                               : currentUserPhoto,
-                          phoneNumber: _model.yourPhoneController.text,
+                          phoneNumber: _model.yourPhoneTextController.text,
                           location: _model.yourLocationValue,
-                          description: _model.myBioController.text,
-                          displayName: _model.yourNameController.text,
+                          description: _model.myBioTextController.text,
+                          displayName: _model.yourNameTextController.text,
                         ));
                         logFirebaseEvent('Button-Login_show_snack_bar');
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -658,6 +686,7 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                                   .override(
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: FlutterFlowTheme.of(context).info,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                             duration: const Duration(milliseconds: 4000),
@@ -689,6 +718,7 @@ class _ProfileCREDITWidgetState extends State<ProfileCREDITWidget>
                             .override(
                               fontFamily: 'Plus Jakarta Sans',
                               color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
                             ),
                         elevation: 0.0,
                         borderSide: BorderSide(
